@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.example.accountdata'
+version = '1.0.0'
+description = 'Paper Account-Data Plugin für UserLogin'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'papermc'
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+}
+
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT'
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('jar') {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+// Paper-Plugins brauchen kein Fat-JAR (Paper-API wird vom Server bereitgestellt).
+// Falls du SQLite-Treiber mitliefern willst:
+// dependencies { implementation 'org.xerial:sqlite-jdbc:3.46.0.0' }
+// und dann shadowJar nutzen.
