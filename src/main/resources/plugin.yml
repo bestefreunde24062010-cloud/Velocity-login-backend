@@ -1,0 +1,6 @@
+name: AccountData
+version: '1.0.0'
+main: com.example.accountdata.AccountDataPlugin
+api-version: '1.21'
+author: DeinName
+description: Speichert Inventar und Position pro Account-Namen.
